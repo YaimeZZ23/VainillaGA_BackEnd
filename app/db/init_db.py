@@ -88,11 +88,58 @@ def init_db():
         FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
         FOREIGN KEY (id_comentario) REFERENCES comentarios(id) ON DELETE CASCADE
     );
+
+    -- Inserción del usuario Administrador por defecto
     INSERT INTO usuarios (nombre_usuario, correo, clave_hash, rol)
     SELECT 'ZF', 'elmandangas@gmail.com', '$argon2i$v=19$m=16,t=2,p=1$Y0ltaTNibmVkR2M4UHNMcA$IHAk7elox7re7wngmV5gvw', 'admin'
     WHERE NOT EXISTS (
-    SELECT 1 FROM usuarios WHERE nombre_usuario = 'ZF' OR correo = 'elmandangas@gmail.com'
+        SELECT 1 FROM usuarios WHERE nombre_usuario = 'ZF' OR correo = 'elmandangas@gmail.com'
     );
+
+    -- Inserción de Géneros
+    INSERT OR IGNORE INTO generos (nombre) VALUES 
+    ('Acción'), ('Aventura'), ('Fantasía'), ('Terror'), ('Ciencia Ficción'), 
+    ('Drama'), ('Psicológico'), ('Sobrenatural'), ('Artes Marciales'), ('Seinen');
+
+    -- Inserción de 10 Mangas MVP
+    INSERT INTO mangas (id, titulo, descripcion, tipo, url_portada, estado_publicacion, capitulos_totales, nota_general, autor, fecha_creacion, Ecchi) VALUES 
+    (1, 'Dragon Ball', 'Goku y la búsqueda de las esferas del dragón.', 'manga', 'resources/portadas/1.jpg', 'finalizado', 519, 9.5, 'Akira Toriyama', '1984-11-20', 0),
+    (2, 'Akira', 'Ciberpunk en un Neo-Tokyo post-apocalíptico.', 'manga', 'resources/portadas/2.jpg', 'finalizado', 120, 9.8, 'Katsuhiro Otomo', '1982-12-06', 0),
+    (3, 'Berserk', 'La épica y oscura historia de Guts, el guerrero negro.', 'manga', 'resources/portadas/3.jpg', 'emision', 373, 9.9, 'Kentaro Miura', '1989-08-25', 0),
+    (4, 'Monster', 'Un cirujano busca a un monstruo que él mismo salvó.', 'manga', 'resources/portadas/4.jpg', 'finalizado', 162, 9.7, 'Naoki Urasawa', '1994-12-01', 0),
+    (5, 'Slam Dunk', 'Hanamichi Sakuragi y su camino en el baloncesto.', 'manga', 'resources/portadas/5.jpg', 'finalizado', 276, 9.3, 'Takehiko Inoue', '1990-10-01', 0),
+    (6, 'Ghost in the Shell', 'La Mayor Motoko Kusanagi explora la identidad cibernética.', 'manga', 'resources/portadas/6.jpg', 'finalizado', 11, 9.0, 'Masamune Shirow', '1989-05-01', 1),
+    (7, 'Saint Seiya', 'Los caballeros de bronce protegen a la diosa Atenea.', 'manga', 'resources/portadas/7.jpg', 'finalizado', 110, 8.5, 'Masami Kurumada', '1986-01-01', 0),
+    (8, 'Rurouni Kenshin', 'Un samurái errante jura no volver a matar.', 'manga', 'resources/portadas/8.jpg', 'finalizado', 255, 9.1, 'Nobuhiro Watsuki', '1994-04-12', 0),
+    (9, 'Uzumaki', 'Una ciudad obsesionada y maldecida por espirales.', 'manga', 'resources/portadas/9.jpg', 'finalizado', 20, 9.5, 'Junji Ito', '1998-01-01', 0),
+    (10, 'Hokuto no Ken', 'Artes marciales letales en un futuro desértico.', 'manga', 'resources/portadas/10.jpg', 'finalizado', 245, 8.7, 'Buronson', '1983-09-13', 0);
+
+    -- Relación Mangas-Géneros
+    INSERT INTO mangas_generos (id_manga, id_genero) VALUES 
+    (1,1), (1,2), (1,9), (2,5), (2,10), (3,1), (3,3), (3,10), (4,7), (4,10), (5,1), (5,6), 
+    (6,5), (6,10), (7,1), (7,3), (8,1), (8,9), (9,4), (9,8), (10,1), (10,9);
+
+    -- Primer Capítulo de cada Manga
+    INSERT INTO capitulos (id, titulo, id_manga, numero) VALUES 
+    (1, 'Bulma y Son Goku', 1, 1), (2, 'Tetsuo', 2, 1), (3, 'El Guerrero Negro', 3, 1), 
+    (4, 'Dr. Tenma', 4, 1), (5, 'Sakuragi', 5, 1), (6, 'Sección 9', 6, 1), 
+    (7, 'La Armadura', 7, 1), (8, 'El Vagabundo', 8, 1), (9, 'La Espiral', 9, 1), (10, 'Shin', 10, 1);
+
+    -- Páginas para el primer capítulo de cada manga (ejemplo 1 página por manga)
+    INSERT INTO paginas (id_capitulo, numero, url_pagina) VALUES 
+    (1, 1, 'resources/capitulos/1/1.jpg'), (2, 1, 'resources/capitulos/2/1.jpg'), 
+    (3, 1, 'resources/capitulos/3/1.jpg'), (4, 1, 'resources/capitulos/4/1.jpg'),
+    (5, 1, 'resources/capitulos/5/1.jpg'), (6, 1, 'resources/capitulos/6/1.jpg'),
+    (7, 1, 'resources/capitulos/7/1.jpg'), (8, 1, 'resources/capitulos/8/1.jpg'),
+    (9, 1, 'resources/capitulos/9/1.jpg'), (10, 1, 'resources/capitulos/10/1.jpg');
+
+    -- Comentarios (Usando el ID 1 del usuario ZF)
+    INSERT INTO comentarios (id_usuario, id_manga, texto, likes) VALUES 
+    (1, 1, 'El inicio de una leyenda.', 50), (1, 2, 'Obra maestra del ciberpunk.', 40),
+    (1, 3, 'Simplemente arte.', 100), (1, 4, 'Suspenso de primer nivel.', 30),
+    (1, 5, 'El mejor manga de deportes.', 20), (1, 6, 'Muy profundo filosóficamente.', 15),
+    (1, 7, 'Nostalgia pura de los 80.', 25), (1, 8, 'Excelente evolución de personaje.', 18),
+    (1, 9, 'Inquietante como todo lo de Ito.', 60), (1, 10, 'Ya estás muerto.', 45);
     """)
     conn.commit()
     conn.close()

@@ -28,5 +28,3 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Base de datos
-app/db/mangas.db
