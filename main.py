@@ -59,9 +59,9 @@ app.include_router(usuarios.router, prefix="/usuarios", tags=["Usuarios"])
 app.include_router(comentario.router, prefix="/comentarios", tags=["Comentarios"])
 
 # Servir archivos estáticos (portadas y capítulos), si no se mandan desde nginx se pueden activar
-#app.mount(settings.static_portadas_path, StaticFiles(directory=settings.resources_portadas_dir), name="portadas")
-#app.mount(settings.static_capitulos_path, StaticFiles(directory=settings.resources_capitulos_dir), name="capitulos")
-#app.mount(settings.static_logos_path, StaticFiles(directory=settings.resources_logos_dir), name="logos")
+app.mount(settings.static_portadas_path, StaticFiles(directory=settings.resources_portadas_dir), name="portadas")
+app.mount(settings.static_capitulos_path, StaticFiles(directory=settings.resources_capitulos_dir), name="capitulos")
+app.mount(settings.static_logos_path, StaticFiles(directory=settings.resources_logos_dir), name="logos")
 
 @app.get("/")
 def home():
