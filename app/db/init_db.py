@@ -103,16 +103,16 @@ def init_db():
 
     -- Inserción de 10 Mangas MVP
     INSERT INTO mangas (id, titulo, descripcion, tipo, url_portada, estado_publicacion, capitulos_totales, nota_general, autor, fecha_creacion, Ecchi) VALUES 
-    (1, 'Dragon Ball', 'Goku y la búsqueda de las esferas del dragón.', 'manga', 'static/portadas/1.jpg', 'finalizado', 519, 9.5, 'Akira Toriyama', '1984-11-20', 0),
-    (2, 'Akira', 'Ciberpunk en un Neo-Tokyo post-apocalíptico.', 'manga', 'static/portadas/2.jpg', 'finalizado', 120, 9.8, 'Katsuhiro Otomo', '1982-12-06', 0),
-    (3, 'Berserk', 'La épica y oscura historia de Guts, el guerrero negro.', 'manga', 'static/portadas/3.jpg', 'emision', 373, 9.9, 'Kentaro Miura', '1989-08-25', 0),
-    (4, 'Monster', 'Un cirujano busca a un monstruo que él mismo salvó.', 'manga', 'static/portadas/4.jpg', 'finalizado', 162, 9.7, 'Naoki Urasawa', '1994-12-01', 0),
-    (5, 'Slam Dunk', 'Hanamichi Sakuragi y su camino en el baloncesto.', 'manga', 'static/portadas/5.jpg', 'finalizado', 276, 9.3, 'Takehiko Inoue', '1990-10-01', 0),
-    (6, 'Ghost in the Shell', 'La Mayor Motoko Kusanagi explora la identidad cibernética.', 'manga', 'static/portadas/6.jpg', 'finalizado', 11, 9.0, 'Masamune Shirow', '1989-05-01', 1),
-    (7, 'Saint Seiya', 'Los caballeros de bronce protegen a la diosa Atenea.', 'manga', 'static/portadas/7.jpg', 'finalizado', 110, 8.5, 'Masami Kurumada', '1986-01-01', 0),
-    (8, 'Rurouni Kenshin', 'Un samurái errante jura no volver a matar.', 'manga', 'static/portadas/8.jpg', 'finalizado', 255, 9.1, 'Nobuhiro Watsuki', '1994-04-12', 0),
-    (9, 'Uzumaki', 'Una ciudad obsesionada y maldecida por espirales.', 'manga', 'static/portadas/9.jpg', 'finalizado', 20, 9.5, 'Junji Ito', '1998-01-01', 0),
-    (10, 'Hokuto no Ken', 'Artes marciales letales en un futuro desértico.', 'manga', 'static/portadas/10.jpg', 'finalizado', 245, 8.7, 'Buronson', '1983-09-13', 0);
+    (1, 'Dragon Ball', 'Goku y la búsqueda de las esferas del dragón.', 'manga', '/static/portadas/1.jpg', 'finalizado', 519, 9.5, 'Akira Toriyama', '1984-11-20', 0),
+    (2, 'Akira', 'Ciberpunk en un Neo-Tokyo post-apocalíptico.', 'manga', '/static/portadas/2.jpg', 'finalizado', 120, 9.8, 'Katsuhiro Otomo', '1982-12-06', 0),
+    (3, 'Berserk', 'La épica y oscura historia de Guts, el guerrero negro.', 'manga', '/static/portadas/3.jpg', 'emision', 373, 9.9, 'Kentaro Miura', '1989-08-25', 0),
+    (4, 'Monster', 'Un cirujano busca a un monstruo que él mismo salvó.', 'manga', '/static/portadas/4.jpg', 'finalizado', 162, 9.7, 'Naoki Urasawa', '1994-12-01', 0),
+    (5, 'Slam Dunk', 'Hanamichi Sakuragi y su camino en el baloncesto.', 'manga', '/static/portadas/5.jpg', 'finalizado', 276, 9.3, 'Takehiko Inoue', '1990-10-01', 0),
+    (6, 'Ghost in the Shell', 'La Mayor Motoko Kusanagi explora la identidad cibernética.', 'manga', '/static/portadas/6.jpg', 'finalizado', 11, 9.0, 'Masamune Shirow', '1989-05-01', 1),
+    (7, 'Saint Seiya', 'Los caballeros de bronce protegen a la diosa Atenea.', 'manga', '/static/portadas/7.jpg', 'finalizado', 110, 8.5, 'Masami Kurumada', '1986-01-01', 0),
+    (8, 'Rurouni Kenshin', 'Un samurái errante jura no volver a matar.', 'manga', '/static/portadas/8.jpg', 'finalizado', 255, 9.1, 'Nobuhiro Watsuki', '1994-04-12', 0),
+    (9, 'Uzumaki', 'Una ciudad obsesionada y maldecida por espirales.', 'manga', '/static/portadas/9.jpg', 'finalizado', 20, 9.5, 'Junji Ito', '1998-01-01', 0),
+    (10, 'Hokuto no Ken', 'Artes marciales letales en un futuro desértico.', 'manga', '/static/portadas/10.jpg', 'finalizado', 245, 8.7, 'Buronson', '1983-09-13', 0);
 
     -- Relación Mangas-Géneros
     INSERT INTO mangas_generos (id_manga, id_genero) VALUES 
@@ -125,13 +125,13 @@ def init_db():
     (4, 'Dr. Tenma', 4, 1), (5, 'Sakuragi', 5, 1), (6, 'Sección 9', 6, 1), 
     (7, 'La Armadura', 7, 1), (8, 'El Vagabundo', 8, 1), (9, 'La Espiral', 9, 1), (10, 'Shin', 10, 1);
 
-    -- Páginas para el primer capítulo de cada manga (ejemplo 1 página por manga)
+    -- Páginas para el primer capítulo de cada manga (todas apuntan a la misma imagen de ejemplo)
     INSERT INTO paginas (id_capitulo, numero, url_pagina) VALUES 
-    (1, 1, 'static/capitulos/1/1.jpg'), (2, 1, 'static/capitulos/2/1.jpg'), 
-    (3, 1, 'static/capitulos/3/1.jpg'), (4, 1, 'static/capitulos/4/1.jpg'),
-    (5, 1, 'static/capitulos/5/1.jpg'), (6, 1, 'static/capitulos/6/1.jpg'),
-    (7, 1, 'static/capitulos/7/1.jpg'), (8, 1, 'static/capitulos/8/1.jpg'),
-    (9, 1, 'static/capitulos/9/1.jpg'), (10, 1, 'static/capitulos/10/1.jpg');
+    (1, 1, '/static/capitulos/paginaEj.png'), (2, 1, '/static/capitulos/paginaEj.png'), 
+    (3, 1, '/static/capitulos/paginaEj.png'), (4, 1, '/static/capitulos/paginaEj.png'),
+    (5, 1, '/static/capitulos/paginaEj.png'), (6, 1, '/static/capitulos/paginaEj.png'),
+    (7, 1, '/static/capitulos/paginaEj.png'), (8, 1, '/static/capitulos/paginaEj.png'),
+    (9, 1, '/static/capitulos/paginaEj.png'), (10, 1, '/static/capitulos/paginaEj.png');
 
     -- Comentarios (Usando el ID 1 del usuario ZF)
     INSERT INTO comentarios (id_usuario, id_manga, texto, likes) VALUES 
