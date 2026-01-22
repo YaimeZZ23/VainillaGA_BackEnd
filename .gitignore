@@ -11,9 +11,6 @@ venv/
 .env
 *.env
 
-# Static content
-resources/portadas/
-resources/capitulos/
 
 # Distribution / packaging
 build/
