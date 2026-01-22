@@ -1,0 +1,35 @@
+# Python cache and bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+
+# Environment variables and secrets
+.env
+*.env
+
+# Static content
+resources/portadas/
+resources/capitulos/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*~
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Base de datos
+app/db/mangas.db

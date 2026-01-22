@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+passlib[bcrypt]
+pyjwt
+python-multipart
+Pillow
+pandas
+scikit-learn
+scipy
+numpy
+pydantic-settings
+passlib[argon2]
+argon2-cffi
