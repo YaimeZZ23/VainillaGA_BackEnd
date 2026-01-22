@@ -139,7 +139,17 @@ def init_db():
 
     -- 6. Comentarios y Biblioteca del usuario 'prueba'
     INSERT INTO comentarios (id_usuario, id_manga, texto, likes) VALUES 
-    (1, 3, 'El mejor seinen.', 100);
+    (1, 3, 'El mejor seinen.', 100),
+    (1, 2, 'Solo lo leo por los gráficos... de los años 80.', 42),
+    (1, 4, '¿Dónde está el botón de "saltar flashbacks"?', 37),
+    (1, 5, 'Me encanta ver a adolescentes sudorosos... jugando al baloncesto.', 29),
+    (1, 6, 'La IA que predijo el futuro... excepto los teléfonos móviles.', 51),
+    (1, 7, 'Caballeros del Zodiaco, pero con más relleno que un cojín de Ikea.', 18),
+    (1, 8, 'Un asesino redimido... qué original.', 33),
+    (1, 9, 'Después de leer esto, las galletas de espirales me dan miedo.', 47),
+    (1, 10, 'Nada como un buen masaje de dedos en la presión arterial.', 25),
+    (1, 11, 'La espera entre capítulos es más larga que la vida de Musashi.', 64),
+    (1, 13, 'El único detective que resuelve casos sin moverse del sitio.', 40);
 
     INSERT INTO usuarios_mangas (id_usuario, id_manga, estado_lectura, puntuacion, comentario_personal, id_ultimo_capitulo_leido) VALUES 
     (2, 3, 'leyendo', 10.0, 'Impactante.', 3),
