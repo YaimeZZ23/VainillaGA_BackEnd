@@ -144,7 +144,9 @@ def init_db():
     INSERT INTO usuarios_mangas (id_usuario, id_manga, estado_lectura, puntuacion, comentario_personal, id_ultimo_capitulo_leido) VALUES 
     (2, 3, 'leyendo', 10.0, 'Impactante.', 3),
     (2, 1, 'completado', 9.0, 'Imprescindible.', 1),
-    (2, 15, 'favorito', 9.8, 'Una joya oculta.', 15);
+    (2, 15, 'favorito', 9.8, 'Una joya oculta.', 15),
+    (2, 14, 'favorito', 9.5, 'Mejor que Auguste Dupin.', 14),
+    (2, 12, 'pendiente', null, 'Posible obra maestra.', 12);
     """)
     conn.commit()
     conn.close()
