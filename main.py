@@ -42,7 +42,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://192.168.18.193:3000",
-        "http://localhost:3000",
+        "https://vainillaga-frontend-re.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
