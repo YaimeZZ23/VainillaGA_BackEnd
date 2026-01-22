@@ -140,6 +140,11 @@ def init_db():
     (1, 5, 'El mejor manga de deportes.', 20), (1, 6, 'Muy profundo filosóficamente.', 15),
     (1, 7, 'Nostalgia pura de los 80.', 25), (1, 8, 'Excelente evolución de personaje.', 18),
     (1, 9, 'Inquietante como todo lo de Ito.', 60), (1, 10, 'Ya estás muerto.', 45);
+
+    -- Usuario de prueba
+    INSERT INTO usuarios (nombre_usuario, correo, clave_hash, rol)
+    VALUES ('prueba', 'prueba@gmail.com', '$argon2i$v=19$m=16,t=2,p=1$Y0ltaTNibmVkR2M4UHNMcA$IHAk7elox7re7wngmV5gvw', 'basico');
+    
     """)
     conn.commit()
     conn.close()
