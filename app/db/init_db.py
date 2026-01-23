@@ -111,14 +111,47 @@ def init_db():
     (15, 'Ashita no Joe', 'Boxeo y drama social.', 'manga', '/static/portadas/15.jpg', 'finalizado', 171, 9.6, 'Asao Takamori', '1968-01-01', 0)
     ON CONFLICT(id) DO NOTHING;
 
-    -- 4. Capítulos (1 por manga)
+    -- 4. Relaciones Manga-Género
+    INSERT OR IGNORE INTO mangas_generos (id_manga, id_genero) VALUES 
+    -- Dragon Ball: Acción, Aventura, Fantasía
+    (1, 1), (1, 2), (1, 3),
+    -- Akira: Acción, Ciencia Ficción, Psicológico
+    (2, 1), (2, 5), (2, 7),
+    -- Berserk: Acción, Fantasía, Drama, Sobrenatural, Seinen
+    (3, 1), (3, 3), (3, 6), (3, 8), (3, 10),
+    -- Monster: Drama, Psicológico, Seinen
+    (4, 6), (4, 7), (4, 10),
+    -- Slam Dunk: Deportes, Drama
+    (5, 11), (5, 6),
+    -- Ghost in the Shell: Acción, Ciencia Ficción, Psicológico, Seinen
+    (6, 1), (6, 5), (6, 7), (6, 10),
+    -- Saint Seiya: Acción, Aventura, Fantasía
+    (7, 1), (7, 2), (7, 3),
+    -- Rurouni Kenshin: Acción, Aventura, Drama, Artes Marciales
+    (8, 1), (8, 2), (8, 6), (8, 9),
+    -- Uzumaki: Terror, Psicológico, Sobrenatural, Seinen
+    (9, 4), (9, 7), (9, 8), (9, 10),
+    -- Hokuto no Ken: Acción, Artes Marciales, Drama
+    (10, 1), (10, 9), (10, 6),
+    -- Vagabond: Acción, Aventura, Drama, Artes Marciales, Seinen
+    (11, 1), (11, 2), (11, 6), (11, 9), (11, 10),
+    -- JoJo: Acción, Aventura, Sobrenatural
+    (12, 1), (12, 2), (12, 8),
+    -- Yu Yu Hakusho: Acción, Aventura, Sobrenatural, Artes Marciales
+    (13, 1), (13, 2), (13, 8), (13, 9),
+    -- Detective Conan: Drama, Psicológico
+    (14, 6), (14, 7),
+    -- Ashita no Joe: Deportes, Drama, Seinen
+    (15, 11), (15, 6), (15, 10);
+
+    -- 5. Capítulos (1 por manga)
     INSERT INTO capitulos (id, titulo, id_manga, numero) VALUES 
     (1,'Capítulo 1',1,1), (2,'Capítulo 1',2,1), (3,'Capítulo 1',3,1), (4,'Capítulo 1',4,1), (5,'Capítulo 1',5,1),
     (6,'Capítulo 1',6,1), (7,'Capítulo 1',7,1), (8,'Capítulo 1',8,1), (9,'Capítulo 1',9,1), (10,'Capítulo 1',10,1),
     (11,'Capítulo 1',11,1), (12,'Capítulo 1',12,1), (13,'Capítulo 1',13,1), (14,'Capítulo 1',14,1), (15,'Capítulo 1',15,1)
     ON CONFLICT(id) DO NOTHING;
 
-    -- 5. Páginas (2 por capítulo: paginaEj y paginaEj2)
+    -- 6. Páginas (2 por capítulo: paginaEj y paginaEj2)
     INSERT INTO paginas (id_capitulo, numero, url_pagina) VALUES 
     (1,1,'/static/capitulos/paginaEj.png'), (1,2,'/static/capitulos/paginaEj2.png'),
     (2,1,'/static/capitulos/paginaEj.png'), (2,2,'/static/capitulos/paginaEj2.png'),
@@ -137,7 +170,7 @@ def init_db():
     (15,1,'/static/capitulos/paginaEj.png'), (15,2,'/static/capitulos/paginaEj2.png')
     ON CONFLICT DO NOTHING;
 
-    -- 6. Comentarios y Biblioteca del usuario 'prueba'
+    -- 7. Comentarios y Biblioteca del usuario 'prueba'
     INSERT INTO comentarios (id_usuario, id_manga, texto, likes) VALUES 
     (1, 3, 'El mejor seinen.', 100),
     (1, 2, 'Solo lo leo por los gráficos... de los años 80.', 42),

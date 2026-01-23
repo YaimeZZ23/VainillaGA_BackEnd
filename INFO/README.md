@@ -1,4 +1,4 @@
-# VanillaGA - Gestor de Lectura de Manga
+# VainillaGA - Gestor de Lectura de Manga
 
 > Un lector de manga personalizado con API RESTful desarrollado con FastAPI
 
@@ -13,7 +13,7 @@
 - **API RESTful** documentada con OpenAPI/Swagger
 - **Docker Compose** para despliegue simplificado
 - **Nginx** como proxy inverso
-- **Base de datos SQLite** para desarrollo
+- **Base de datos SQLite** para desarrollo, (en el futuro se puede cambiar a postgresql)
 
 
 ## Requisitos previos
@@ -27,7 +27,7 @@
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/vanillaga.git
+   git clone x
    cd vanillaga
    ```
 
@@ -72,7 +72,7 @@
 
 ## Variables de Entorno
 
-Crea un archivo `.env` basado en `.env.example` con las siguientes variables:
+Crea un archivo `.env` con las siguientes variables:
 
 ```env
 # Configuración de la aplicación
@@ -142,16 +142,9 @@ vanillaga/
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE para más detalles.
 
----
 
-Desarrollado por Yaime - Un lector personalizado hecho a medida
-
-[![Visitas](https://img.shields.io/badge/Hecho%20con-FastAPI-009485?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Docker-Containers-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-
-> "Hecho por necesidad de un lector personalizado, que pases un buen día y te sirva el proyecto."
+> "Hecho por un lector para lectores, que pases un buen día y espero que te sirva el proyecto."
 
 Última actualización: Enero 2026
